@@ -29,14 +29,12 @@ struct ContentView: View {
 #endif
             .toolbar {
 #if os(iOS)
-                ToolbarItem(placement: .navigationBarTrailing) {
+                ToolbarItem(placement: .navigationBarLeading) {
                     EditButton()
                 }
 #endif
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
+                ToolbarItem(placement: .navigationBarTrailing) {
+               
                 }
             }
         } detail: {
@@ -44,12 +42,7 @@ struct ContentView: View {
         }
     }
 
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
+    
 
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
